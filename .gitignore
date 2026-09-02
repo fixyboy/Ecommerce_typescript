@@ -1,13 +1,39 @@
-coverage
+# --- Dependencies ---
 node_modules
+
+# --- Build & test output (generated, never committed) ---
 build
-.env
-.env.example
-.env.test
-.vscode 
+dist
+coverage
 logs
+*.tsbuildinfo
+*.log
+*.db
+tests/temp_test_output.csv
+tests/data/tempTestOutput.csv
+
+# --- Secrets ---
+.env
+.env.test
+.env.example
+
+# --- Course material: PAID CONTENT, repo is PUBLIC. Never commit. ---
+assignment.md
 assignmenet.md
 parser_assignment.md
-gemini.md
-skills/
+.firecrawl/
 screenshots/
+
+# --- Personal / local-only, not submission material ---
+CLAUDE.md
+NOTES.md
+codebase-overview.html
+course/
+skills/
+
+# --- Editor & OS cruft ---
+.vscode
+.idea
+.claude
+.DS_Store
+Thumbs.db
