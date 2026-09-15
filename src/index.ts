@@ -10,7 +10,7 @@ async function main() {
     const data = await readCSVFile(dataPath);
     const cakeMapper = new CSVCakeMapper();
     const orderMapper = new CSVOrderMapper(cakeMapper);
-    const orders = data.map(orderMapper.map);
+    const orders = data.map(r => orderMapper.map(r));
     logger.info("Successfully mapped list of orders from CSV data.%o", orders);
 }
 

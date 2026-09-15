@@ -5,9 +5,9 @@
     "clean": "rd /s /q build",
     "prebuild": "npm run clean && npm run lint",
     "build": "tsc",
-    "postbuild": "echo Build completed!",
+    "postbuild": "xcopy /E /I /Y src\\data build\\src\\data && echo Build completed!",
     "prestart": "npm run build",
-    "start": "node build/index.js",
+    "start": "node build/src/index.js",
     "dev": "ts-node-dev --respawn src/index.ts",
     "test": "jest"
   },
