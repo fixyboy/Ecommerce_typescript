@@ -1,11 +1,10 @@
 import { Cake } from "../model/cake.model";
 import logger from "../util/logger";
-type Type = "Birthday" | "Wedding" | "Anniversary" | "Graduation" | "Baby Shower" | "Other";
 export class CakeBuilder {
-    private type!: Type;
+    private type!: string;
     private flavor!: string;
     private filling!: string;
-    private size!: string;
+    private size!: number;
     private layers!: number;
     private frostingType!: string;
     private frostingFlavor!: string;
@@ -17,7 +16,11 @@ export class CakeBuilder {
     private specialIngredients!: string;
     private packagingType!: string;
 
-    setType(type: Type): CakeBuilder {
+    public static newBuilder(): CakeBuilder {
+        return new CakeBuilder();
+    }
+
+    setType(type: string): CakeBuilder {
         this.type = type;
         return this;
     }
@@ -32,7 +35,7 @@ export class CakeBuilder {
         return this;
     }
 
-    setSize(size: string): CakeBuilder {
+    setSize(size: number): CakeBuilder {
         this.size = size;
         return this;
     }
@@ -106,7 +109,7 @@ export class CakeBuilder {
             this.packagingType
         ];
         for (const property of requiredProperties) {
-            if (!property) {
+            if (property == undefined) {
                 logger.error("Missing required property for Cake");
                 throw new Error("Missing required property for Cake");
             }

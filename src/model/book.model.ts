@@ -1,6 +1,6 @@
-import { Item, ItemCategory } from "./item.model";
+import { IItem, ItemCategory } from "./iItem";
 
-export class Book implements Item {
+export class Book implements IItem {
 
         private bookTitle: string;
         private author: string;

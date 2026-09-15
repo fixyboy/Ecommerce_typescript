@@ -7,7 +7,7 @@ describe('CakeBuilder', () => {
             .setType('Birthday')
             .setFlavor('Chocolate')
             .setFilling('Ganache')
-            .setSize('Medium')
+            .setSize(10)
             .setLayers(2)
             .setFrostingType('Buttercream')
             .setFrostingFlavor('Vanilla')

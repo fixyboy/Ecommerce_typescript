@@ -16,6 +16,7 @@ const logConsoleFormat = winston.format.combine(
     winston.format.colorize(),
     winston.format.errors({ stack: true }),
     winston.format.timestamp({format: "HH:mm:ss"}),
+    winston.format.splat(),
     winston.format.printf( ({timestamp, level, message, stack }) =>
     {
        return `[${timestamp}] ${level}: ${message}` + (stack ? `\n${stack}` : "");

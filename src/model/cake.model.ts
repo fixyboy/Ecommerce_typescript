@@ -1,11 +1,10 @@
-import { Item, ItemCategory } from "./item.model";
-type Type = "Birthday" | "Wedding" | "Anniversary" | "Graduation" | "Baby Shower" | "Other";
+import { IItem, ItemCategory } from "./iItem";
 
-export class Cake implements Item {
-    private type: Type;
+export class Cake implements IItem {
+    private type: string;
     private flavor: string;
     private filling: string;
-    private size: string;
+    private size: number;
     private layers: number;
     private frostingType: string;
     private frostingFlavor: string;
@@ -18,10 +17,10 @@ export class Cake implements Item {
     private packagingType: string;
 
     constructor(
-        type: Type,
+        type: string,
         flavor: string,
         filling: string,
-        size: string,
+        size: number,
         layers: number,
         frostingType: string,
         frostingFlavor: string,
@@ -53,10 +52,10 @@ export class Cake implements Item {
         return ItemCategory.CAKE;
     }
 
-    getType(): Type { return this.type; }
+    getType(): string { return this.type; }
     getFlavor(): string { return this.flavor; }
     getFilling(): string { return this.filling; }
-    getSize(): string { return this.size; }
+    getSize(): number { return this.size; }
     getLayers(): number { return this.layers; }
     getFrostingType(): string { return this.frostingType; }
     getFrostingFlavor(): string { return this.frostingFlavor; }
