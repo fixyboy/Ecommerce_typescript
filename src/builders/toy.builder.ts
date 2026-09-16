@@ -2,14 +2,19 @@ import { Toy }  from "../model/toy.model";
 import logger from "../util/logger";
 
 export class ToyBuilder {
-    private toyName!: string;
+    private toyType!: string;
     private ageGroup!: string;
     private brand!: string;
     private material!: string;
-    private color!: string;
+    private batteryRequired!: string;
+    private educational!: string;
 
-    setToyName(toyName: string): ToyBuilder {
-        this.toyName = toyName;
+    public static newBuilder(): ToyBuilder {
+        return new ToyBuilder();
+    }
+
+    setToyType(toyType: string): ToyBuilder {
+        this.toyType = toyType;
         return this;
     };
     setAgeGroup(ageGroup: string): ToyBuilder {
@@ -24,29 +29,35 @@ export class ToyBuilder {
         this.material = material;
         return this;
     };
-    setColor(color: string): ToyBuilder {
-        this.color = color;
+    setBatteryRequired(batteryRequired: string): ToyBuilder {
+        this.batteryRequired = batteryRequired;
+        return this;
+    }
+    setEducational(educational: string): ToyBuilder {
+        this.educational = educational;
         return this;
     }
   
     build(): Toy {
         const requiredFields = [
-            this.toyName,
+            this.toyType,
             this.ageGroup,
             this.brand,
             this.material,
-            this.color,
+            this.batteryRequired,
+            this.educational,
         ];
         if (requiredFields.some((field) => !field)) {
             logger.error("All required fields must be set");
             throw new Error("All required fields must be set");
         }
         return new Toy(
-            this.toyName,
+            this.toyType,
             this.ageGroup,
             this.brand,
             this.material,
-            this.color
+            this.batteryRequired,
+            this.educational
         );
     }
   }

@@ -1,17 +1,17 @@
 import path from 'path';
 import logger from './util/logger';
-import { readCSVFile } from './util/CSV_parser';
-import { CSVCakeMapper } from './mappers/Cake.mapper';
-import { CSVOrderMapper } from './mappers/Order.mapper';
+import { parseJSONFile } from './util/JSON_parser';
+import { JSONOrderMapper } from './mappers/Order.mapper';
+import { JSONBookMapper } from './mappers/Book.mapper';
 
-const dataPath = path.resolve(__dirname, './data/cake orders.csv');
+const dataPath = path.resolve(__dirname, './data/book orders.json');
 
 async function main() {
-    const data = await readCSVFile(dataPath);
-    const cakeMapper = new CSVCakeMapper();
-    const orderMapper = new CSVOrderMapper(cakeMapper);
+    const data = await parseJSONFile(dataPath);
+    const bookMapper = new JSONBookMapper();
+    const orderMapper = new JSONOrderMapper(bookMapper);
     const orders = data.map(r => orderMapper.map(r));
-    logger.info("Successfully mapped list of orders from CSV data.%o", orders);
+    logger.info("Successfully mapped list of orders from JSON data.%o", orders);
 }
 
 main();

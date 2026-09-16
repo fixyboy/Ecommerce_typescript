@@ -1,7 +1,7 @@
 import { promises as fs } from 'fs';
 import logger from './logger';
 
-export async function parseJSONFile(filePath: string): Promise<object> {
+export async function parseJSONFile(filePath: string): Promise<Record<string, string>[]> {
     try {
         const fileContent = await fs.readFile(filePath, 'utf-8');
         return JSON.parse(fileContent);
