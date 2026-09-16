@@ -20,3 +20,34 @@ export class CSVOrderMapper implements IMapper<string[], IOrder> {
     }
 
 }
+
+export class XMLOrderMapper implements IMapper<Record<string, string>, IOrder> {
+    constructor(private itemMapper: IMapper<Record<string, string>, IItem> ) {
+
+    }
+    map(data: Record<string, string>): IOrder {
+        const item: IItem = this.itemMapper.map(data);
+        return OrderBuilder.newBuilder()
+            .setId(data.OrderID)
+            .setQuantity(parseInt(data.Quantity, 10))
+            .setPrice(parseInt(data.Price, 10))
+            .setItem(item)
+            .build();
+    }
+}
+
+export class JSONOrderMapper implements IMapper<Record<string, string>, IOrder> {
+    constructor(private itemMapper: IMapper<Record<string, string>, IItem> ) {
+
+    }
+    map(data: Record<string, string>): IOrder {
+        const item: IItem = this.itemMapper.map(data);
+        return OrderBuilder.newBuilder()
+            .setId(data["Order ID"])
+            .setQuantity(parseInt(data["Quantity"], 10))
+            .setPrice(parseInt(data["Price"], 10))
+            .setItem(item)
+            .build();
+    }
+}
+

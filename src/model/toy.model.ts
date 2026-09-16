@@ -1,28 +1,33 @@
 import { IItem, ItemCategory } from "./iItem";
 
 export class Toy implements IItem {
-    private toyName: string;
+    private toyType: string;
     private ageGroup: string;
     private brand: string;
     private material: string;
-    private color: string;
+    private batteryRequired: string;
+    private educational: string;
+
 
     constructor(
-        toyName: string,
+        toyType: string,
         ageGroup: string,
         brand: string,
         material: string,
-        color: string
+        batteryRequired: string,
+        educational: string
     ) {
-        this.toyName = toyName;
+        this.toyType = toyType;
         this.ageGroup = ageGroup;
         this.brand = brand;
         this.material = material;
-        this.color = color;
+        this.batteryRequired = batteryRequired;
+        this.educational = educational;
     }
 
-    getToyName(): string {
-        return this.toyName;
+
+    getToyType(): string {
+        return this.toyType;
     }
 
     getAgeGroup(): string {
@@ -37,8 +42,12 @@ export class Toy implements IItem {
         return this.material;
     }
 
-    getColor(): string {
-        return this.color;
+    getBatteryRequired(): string {
+        return this.batteryRequired;
+    }
+
+    getEducational(): string {
+        return this.educational;
     }
 
     getCategory(): ItemCategory {

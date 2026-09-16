@@ -8,21 +8,17 @@ describe("parseXMLFile", () =>{
         const result = await parseXMLFile(filePath);
 
         expect(result).toBeDefined();
-        expect(result).toEqual({
-            "data":{
-                "row":{
-                    "OrderID": "5001",
-                    "Type": "Plush Toy",
-                    "AgeGroup": "13+",
-                    "Brand": "FunTime",
-                    "Material": "Fabric",
-                    "BatteryRequired": "Yes",
-                    "Educational": "Yes",
-                    "Price": "247",
-                    "Quantity": "7"
-                }
-            }
-        });
+        expect(result).toEqual([{
+            "OrderID": "5001",
+            "Type": "Plush Toy",
+            "AgeGroup": "13+",
+            "Brand": "FunTime",
+            "Material": "Fabric",
+            "BatteryRequired": "Yes",
+            "Educational": "Yes",
+            "Price": "247",
+            "Quantity": "7"
+        }]);
 
 
     })
