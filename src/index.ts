@@ -1,17 +1,14 @@
-import path from 'path';
 import logger from './util/logger';
-import { parseJSONFile } from './util/JSON_parser';
-import { JSONOrderMapper } from './mappers/Order.mapper';
-import { JSONBookMapper } from './mappers/Book.mapper';
+import { CakeOrderRepository } from './repository/file/Cake.order.repository';
+import config from './config/index';
 
-const dataPath = path.resolve(__dirname, './data/book orders.json');
+const path = config.storage.csv.cake;
 
 async function main() {
-    const data = await parseJSONFile(dataPath);
-    const bookMapper = new JSONBookMapper();
-    const orderMapper = new JSONOrderMapper(bookMapper);
-    const orders = data.map(r => orderMapper.map(r));
-    logger.info("Successfully mapped list of orders from JSON data.%o", orders);
+
+    const repository = new CakeOrderRepository(path);
+    const data = await repository.get("17");
+    logger.info("list of orders %o", data);
 }
 
 main();

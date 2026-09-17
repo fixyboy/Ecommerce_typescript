@@ -15,4 +15,17 @@ export class JSONBookMapper implements IMapper<Record<string, string>, Book> {
         .setPackaging(data["Packaging"])
         .build();
     }
+
+    reverseMap(data: Book): Record<string, string> {
+        return {
+            "Book Title": data.getBookTitle(),
+            "Author": data.getAuthor(),
+            "Genre": data.getGenre(),
+            "Format": data.getFormat(),
+            "Language": data.getLanguage(),
+            "Publisher": data.getPublisher(),
+            "Special Edition": data.getSpecialEdition(),
+            "Packaging": data.getPackaging()
+        };
+    }
 }

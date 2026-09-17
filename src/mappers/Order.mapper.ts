@@ -16,7 +16,17 @@ export class CSVOrderMapper implements IMapper<string[], IOrder> {
             .setQuantity(parseInt(data[dataLength - 1], 10))
             .setPrice(parseInt(data[dataLength - 2], 10))
             .setItem(item)
-            .build();   
+            .build();
+    }
+
+    reverseMap(data: IOrder): string[] {
+        const itemData = this.itemMapper.reverseMap(data.getItem());
+        return [
+            data.getId(),
+            ...itemData,
+            data.getPrice().toString(),
+            data.getQuantity().toString()
+        ];
     }
 
 }
@@ -34,6 +44,16 @@ export class XMLOrderMapper implements IMapper<Record<string, string>, IOrder> {
             .setItem(item)
             .build();
     }
+
+    reverseMap(data: IOrder): Record<string, string> {
+        const itemData = this.itemMapper.reverseMap(data.getItem());
+        return {
+            ...itemData,
+            OrderID: data.getId(),
+            Price: data.getPrice().toString(),
+            Quantity: data.getQuantity().toString()
+        };
+    }
 }
 
 export class JSONOrderMapper implements IMapper<Record<string, string>, IOrder> {
@@ -48,6 +68,16 @@ export class JSONOrderMapper implements IMapper<Record<string, string>, IOrder> 
             .setPrice(parseInt(data["Price"], 10))
             .setItem(item)
             .build();
+    }
+
+    reverseMap(data: IOrder): Record<string, string> {
+        const itemData = this.itemMapper.reverseMap(data.getItem());
+        return {
+            ...itemData,
+            "Order ID": data.getId(),
+            "Price": data.getPrice().toString(),
+            "Quantity": data.getQuantity().toString()
+        };
     }
 }
 
