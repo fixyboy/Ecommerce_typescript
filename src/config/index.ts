@@ -12,6 +12,7 @@ export default {
             toy: "./data/toy orders.xml",
             book: "./data/book orders.json"
 
-        }
+        },
+        sqlite : "src/data/orders.db"
     }
 }

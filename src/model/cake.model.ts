@@ -1,6 +1,19 @@
-import { IItem, ItemCategory } from "./iItem";
+import { IIdentifiableItem, IItem, ItemCategory } from "./iItem";
+
+export class IIdentifiableCake implements IIdentifiableItem {
+
+    constructor(private cake: IItem, private id: string) {}
+    getItem(): IItem {
+    return this.cake;   
+    }
+    
+    getId(): string {
+        return this.id;
+    }
+}
 
 export class Cake implements IItem {
+    
     private type: string;
     private flavor: string;
     private filling: string;
